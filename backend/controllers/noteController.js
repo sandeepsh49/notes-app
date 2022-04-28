@@ -1,6 +1,5 @@
 const asyncHandler = require('express-async-handler')
 const Note = require('../models/noteModel')
-const User = require('../models/userModel')
 
 // desc:    Get Note
 // route:   GET /api/notes
@@ -10,10 +9,10 @@ const getNotes = asyncHandler(async (req, res) => {
     res.status(200).json(notes)
 })
 
-// desc:    Create Note
+// desc:    Set Note
 // route:   POST /api/notes
 // access:  Private
-const createNote = asyncHandler(async (req, res) => {
+const setNote = asyncHandler(async (req, res) => {
     if(!req.body.text) {
         res.status(400)
         throw new Error("Please add a text field")
@@ -84,7 +83,7 @@ const deleteNote = asyncHandler(async (req, res) => {
 
 module.exports = {
     getNotes,
-    createNote,
+    setNote,
     updateNote,
     deleteNote
 }
