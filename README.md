@@ -19,6 +19,6 @@ npm install
 npm run server
 ```
 
-## Demo
+### Demo
 
 https://notesmern.herokuapp.com/
