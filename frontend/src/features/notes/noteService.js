@@ -44,7 +44,6 @@ const deleteNote = async (noteId, token) => {
 const noteService = {
 	createNote,
 	getNotes,
-	updateNote,
 	deleteNote,
 };
 

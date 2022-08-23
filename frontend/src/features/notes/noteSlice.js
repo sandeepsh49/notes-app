@@ -85,19 +85,6 @@ export const noteSlice = createSlice({
 				state.isError = true;
 				state.message = action.payload;
 			})
-			.addCase(updateNote.pending, state => {
-				state.isLoading = true;
-			})
-			.addCase(updateNote.fulfilled, (state, action) => {
-				state.isLoading = false;
-				state.isSuccess = true;
-				state.notes = action.payload;
-			})
-			.addCase(updateNote.rejected, (state, action) => {
-				state.isLoading = false;
-				state.isError = true;
-				state.message = action.payload;
-			})
 			.addCase(deleteNote.pending, state => {
 				state.isLoading = true;
 			})
