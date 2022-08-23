@@ -96,14 +96,10 @@ h3 {
 .note {
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 	background-color: #f4f4f4;
-	font-size: 1em;
+	font-size: 0.75rem;
 	margin: 10px 0;
-	padding: 20px 0 10px;
+	padding: 20px 20px 10px;
 	position: relative;
-}
-
-.note-date {
-	font-size: 0.7em;
 }
 
 .note .close {
@@ -208,8 +204,9 @@ h3 {
 	}
 }
 
-@media (max-width: 600px) {
-	.form {
+@media (max-width: 700px) {
+	.form,
+	.content {
 		width: 90%;
 	}
 
@@ -219,6 +216,10 @@ h3 {
 
 	.heading p {
 		font-size: 1.5rem;
+	}
+
+	.notes {
+		display: block;
 	}
 }
 
