@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createNote } from '../features/notes/noteSlice';
+import { createNote, updateNote } from '../features/notes/noteSlice';
 
-function NoteForm() {
+function NoteForm(props) {
 	const [text, setText] = useState('');
 
 	const dispatch = useDispatch();
@@ -10,8 +10,13 @@ function NoteForm() {
 	const onSubmit = e => {
 		e.preventDefault();
 
-		dispatch(createNote({ text }));
-		setText('');
+		if (props.edit) {
+			props.updateEdit();
+			dispatch(updateNote([props.noteId, { text }]));
+		} else {
+			dispatch(createNote({ text }));
+			setText('');
+		}
 	};
 
 	return (
@@ -19,7 +24,14 @@ function NoteForm() {
 			<form onSubmit={onSubmit}>
 				<div className="form-group">
 					<label htmlFor="text">Note</label>
-					<textarea name="text" id="text" rows="5" value={text} onChange={e => setText(e.target.value)} />
+					<textarea
+						name="text"
+						id="text"
+						rows="5"
+						value={text}
+						placeholder={props.edit ? props.noteText : ''}
+						onChange={e => setText(e.target.value)}
+					/>
 				</div>
 				<div className="form-group">
 					<button className="btn btn-block" type="submit">

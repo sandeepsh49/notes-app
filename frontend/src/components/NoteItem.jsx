@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { deleteNote } from '../features/notes/noteSlice';
 
-function NoteItem({ note }) {
+function NoteItem({ note, handleEdit }) {
 	const dispatch = useDispatch();
 
 	return (
@@ -11,6 +11,7 @@ function NoteItem({ note }) {
 			<button onClick={() => dispatch(deleteNote(note._id))} className="close">
 				&#10006;
 			</button>
+			<button onClick={e => handleEdit(note._id, note.text)}>Edit</button>
 		</div>
 	);
 }
