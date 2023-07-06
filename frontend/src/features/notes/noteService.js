@@ -29,14 +29,14 @@ const getNotes = async token => {
 };
 
 // Update user note
-const updateNote = async (noteData, token) => {
+const updateNote = async (noteId, noteData, token) => {
 	const config = {
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},
 	};
 
-	const response = await axios.put(API_URL + noteData[0], noteData[1], config);
+	const response = await axios.put(API_URL + noteId, noteData, config);
 
 	return response.data;
 };

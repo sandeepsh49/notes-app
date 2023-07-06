@@ -41,7 +41,7 @@ export const getNotes = createAsyncThunk('notes/getAll', async (_, thunkAPI) => 
 export const updateNote = createAsyncThunk('notes/update', async (noteData, thunkAPI) => {
 	try {
 		const token = thunkAPI.getState().auth.user.token;
-		return await noteService.updateNote(noteData, token);
+		return await noteService.updateNote(noteData._id, noteData, token);
 	} catch (error) {
 		const message =
 			(error.response && error.response.data && error.response.data.message) ||
