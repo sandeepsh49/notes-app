@@ -105,11 +105,11 @@ export const noteSlice = createSlice({
 			.addCase(updateNote.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.isSuccess = true;
-				state.notes.splice(
-					state.notes.findIndex(note => note._id === action.payload.id),
-					1,
-					action.payload
-				);
+				const updatedNote = action.payload;
+				const updatedNoteIndex = state.notes.findIndex(note => note._id === updatedNote._id);
+				if (updatedNoteIndex !== -1) {
+					state.notes[updatedNoteIndex] = updatedNote;
+				}
 			})
 			.addCase(updateNote.rejected, (state, action) => {
 				state.isLoading = false;
